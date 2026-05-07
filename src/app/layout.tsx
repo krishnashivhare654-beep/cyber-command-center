@@ -1,27 +1,18 @@
-import type { Metadata } from "next";
+"use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeProvider";
-import Navbar from "@/components/Navbar"; // Navbar import karein
+import { ThemeProvider } from "../context/ThemeProvider";
+import Navbar from "../components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Krishna Shivare | Cyber Command Center",
-  description: "Advanced Cybersecurity Portfolio with 10 Integrated Modules",
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-background text-foreground antialiased`}>
+      <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <Navbar /> {/* Navbar yahan place karein */}
-          <main>{children}</main>
+          <Navbar />
+          <main className="min-h-screen pt-20">{children}</main>
         </ThemeProvider>
       </body>
     </html>

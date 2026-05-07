@@ -1,14 +1,12 @@
 "use client";
-import { useEffect } from "react";
-import { gsap } from "gsap"; 
+import React, { useEffect } from "react";
+import { gsap } from "gsap";
 import { ShieldCheck, Target, Award } from "lucide-react";
 
-export default function About() {
+export default function AboutPage() {
   useEffect(() => {
-    // Window check zaroori hai Next.js ke liye
     if (typeof window !== "undefined") {
-      const tl: any = gsap.timeline();
-      tl.from(".about-content", { 
+      gsap.from(".about-content", { 
         opacity: 0, 
         x: -50, 
         duration: 1, 
@@ -32,7 +30,14 @@ export default function About() {
             Main Krishna Shivare, VIT Bhopal ka B.Tech student hoon. Mera focus Cybersecurity aur Full-Stack Development par hai.
           </p>
         </section>
-        {/* Baki sections... */}
+        <section className="about-content grid md:grid-cols-2 gap-6 pb-20">
+          <div className="p-6 border border-emerald-500/20 bg-emerald-500/5 rounded-xl">
+            <h3 className="flex items-center gap-2 font-bold mb-2 text-white">
+              <ShieldCheck className="text-emerald-500" /> Ethics
+            </h3>
+            <p className="text-sm text-gray-500 italic">"Loyalty and care for everyone."</p>
+          </div>
+        </section>
       </div>
     </div>
   );
