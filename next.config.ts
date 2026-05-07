@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    // !! WARN !!
-    // TypeScript errors ko ignore karega taaki deployment success ho jaye
+    // Ye production build mein type checking skip karega
     ignoreBuildErrors: true,
   },
   eslint: {
-    // Build ke time ESLint errors ignore karega
+    // Build ke waqt linting errors ignore karega
     ignoreDuringBuilds: true,
   },
+  // SwcMinify performance improve karta hai
+  swcMinify: true,
 };
 
 export default nextConfig;
