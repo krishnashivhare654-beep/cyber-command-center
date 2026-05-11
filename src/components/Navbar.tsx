@@ -1,19 +1,25 @@
 "use client";
 import Link from "next/link";
-import { Shield, LayoutGrid, Info, BookOpen } from "lucide-react";
+import { Shield, Info, LayoutGrid, Database } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 w-full z-50 border-b border-emerald-500/20 bg-black/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between text-emerald-500">
-        <Link href="/" className="font-mono font-bold text-xl flex items-center gap-2">
-          <Shield /> CYBER_HUB
+    <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-emerald-500/10 px-8 py-4 flex justify-between items-center">
+      <Link href="/" className="flex items-center gap-2 text-emerald-500 font-bold tracking-tighter hover:scale-105 transition-transform">
+        <Shield size={20} />
+        <span>CYBER_HUB</span>
+      </Link>
+      
+      <div className="flex gap-8 text-[10px] font-mono tracking-widest">
+        <Link href="/about" className="flex items-center gap-1 text-gray-400 hover:text-emerald-400 transition-colors">
+          <Info size={14} /> ABOUT
         </Link>
-        <div className="flex gap-6 text-[10px] uppercase tracking-widest font-mono">
-          <Link href="/about" className="hover:text-white transition-colors flex items-center gap-1"><Info size={14}/> About</Link>
-          <Link href="/projects" className="hover:text-white transition-colors flex items-center gap-1"><LayoutGrid size={14}/> Arsenal</Link>
-          <Link href="/resources" className="hover:text-white transition-colors flex items-center gap-1"><BookOpen size={14}/> Intel</Link>
-        </div>
+        <Link href="/projects" className="flex items-center gap-1 text-gray-400 hover:text-emerald-400 transition-colors">
+          <LayoutGrid size={14} /> ARSENAL
+        </Link>
+        <Link href="/resources" className="flex items-center gap-1 text-gray-400 hover:text-emerald-400 transition-colors">
+          <Database size={14} /> INTEL
+        </Link>
       </div>
     </nav>
   );

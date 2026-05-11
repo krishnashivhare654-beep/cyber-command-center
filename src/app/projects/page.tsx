@@ -1,35 +1,29 @@
 "use client";
-import { useEffect } from "react";
-import { gsap } from "gsap";
-import { Shield, Lock, Zap, Eye, Globe, Cpu, Terminal, Database, Activity, Search } from "lucide-react";
+import Link from "next/link";
+import { Eye, Lock, Zap, Cpu, Globe, Shield } from "lucide-react";
 
-const projects = [
-  { id: 1, name: "ShadowTrace", icon: <Eye />, cat: "Threat Intel" },
-  { id: 2, name: "Sentinel Prime", icon: <Zap />, cat: "NIDS" },
-  { id: 3, name: "Vault-X", icon: <Lock />, cat: "Cryptography" },
-  { id: 4, name: "NERA Smart-Glass", icon: <Cpu />, cat: "IoT/AI" },
-  { id: 5, name: "Zero-Trust Mesh", icon: <Shield />, cat: "Network" },
-  { id: 6, name: "Packet Phantom", icon: <Activity />, cat: "Stealth" },
-  { id: 7, name: "Neural Defender", icon: <Database />, cat: "ML/AI" },
-  { id: 8, name: "IoT Orchestrator", icon: <Globe />, cat: "Middleware" },
-  { id: 9, name: "Social-Engine-X", icon: <Search />, cat: "OSINT" },
-  { id: 10, name: "Cloud Guardian", icon: <Terminal />, cat: "Cloud" },
+const cards = [
+  { name: "ShadowTrace", cat: "Threat Intel", icon: <Eye />, path: "/projects/shadowtrace" },
+  { name: "Sentinel Prime", cat: "NIDS", icon: <Zap />, path: "/projects/sentinel-prime" },
+  { name: "Vault-X", cat: "Cryptography", icon: <Lock />, path: "/projects/vault-x" },
+  { name: "NERA", cat: "AI HUD", icon: <Cpu />, path: "/projects/nera" },
+  { name: "IoT Orchestrator", cat: "Middleware", icon: <Globe />, path: "/projects/iot-orchestrator" },
+  { name: "Zero Trust", cat: "Networking", icon: <Shield />, path: "/projects/zero-trust" },
 ];
 
-export default function Projects() {
-  useEffect(() => {
-    gsap.from(".project-card", { opacity: 0, y: 30, stagger: 0.1, duration: 0.8 });
-  }, []);
+export default function Arsenal() {
   return (
-    <div className="p-12 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-mono text-emerald-500 mb-10">PROJECT_ARSENAL_V2.0</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((p) => (
-          <div key={p.id} className="project-card p-6 border border-emerald-500/20 bg-emerald-500/5 rounded-xl hover:bg-emerald-500/10 transition-all">
-            <div className="text-emerald-500 mb-4">{p.icon}</div>
-            <h3 className="text-xl font-bold">{p.name}</h3>
-            <p className="text-sm text-gray-500">{p.cat}</p>
-          </div>
+    <div className="min-h-screen pt-28 px-10 pb-20 max-w-7xl mx-auto">
+      <h1 className="text-3xl font-mono text-emerald-500 mb-12 tracking-[0.3em] uppercase">{">"} Project_Arsenal_v2.0</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {cards.map((c, i) => (
+          <Link href={c.path} key={i}>
+            <div className="p-10 border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-500/60 transition-all rounded-3xl group cursor-pointer">
+              <div className="text-emerald-500 mb-6 group-hover:scale-110 transition-transform">{c.icon}</div>
+              <h3 className="text-xl font-bold text-white mb-2">{c.name}</h3>
+              <p className="text-emerald-800 text-[10px] font-mono uppercase tracking-widest">{c.cat} // ACTIVE</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
